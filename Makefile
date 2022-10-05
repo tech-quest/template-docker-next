@@ -1,3 +1,8 @@
+.PHONY: init
+init:
+	@make up
+	@make install
+
 .PHONY: up
 up:
 	docker compose -f ./.docker/dev/docker-compose.yml up -d
@@ -51,7 +56,7 @@ build:
 	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn build'
 
 .PHONY: start
-lint:
+start:
 	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn start'
 
 .PHONY: lint

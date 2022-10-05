@@ -8,3 +8,5 @@ RUN \
     elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
     else echo "Lockfile not found." && exit 1; \
     fi
+
+COPY . .
