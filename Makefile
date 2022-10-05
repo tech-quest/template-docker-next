@@ -63,3 +63,6 @@ start:
 lint:
 	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn lint'
 
+.PHONY: format
+format:
+	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn format'
