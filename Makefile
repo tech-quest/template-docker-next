@@ -31,10 +31,20 @@ install:
 dev:
 	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn dev'
 
-# e.g. $ make add PACKAGE=create_accounts_table
+# e.g. $ make add MODULE=package_name
 .PHONY: add
 add:
-	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn add $(PACKAGE)'
+	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn add $(MODULE)'
+
+# e.g. $ make add-dev MODULE=package_name
+.PHONY: add-dev
+add-dev:
+	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn add -D $(MODULE)'
+
+# e.g. $ make remove MODULE=package_name
+.PHONY: remove
+remove:
+	docker compose -f ./.docker/dev/docker-compose.yml exec node /bin/bash -c 'yarn remove $(MODULE)'
 
 .PHONY: build
 build:
