@@ -8,8 +8,6 @@ services:
     tty: true
     volumes:
       - ../..:/usr/src/app
-      - docker:/usr/src/app/.docker
-      - node_modules:/usr/src/app/node_modules
     env_file:
       - .env
     ports:
@@ -52,10 +50,6 @@ services:
       - mysql
 
 volumes:
-  docker:
-    driver: local
-  node_modules:
-    driver: local
   mysql:
     driver: local
 
