@@ -1,7 +1,6 @@
 version: "3"
 services:
   node:
-    container_name: tq_next_node
     build:
       context: ../..
       dockerfile: ./.docker/images/node/Dockerfile
@@ -16,7 +15,6 @@ services:
       - tq-net
   
   mysql:
-    container_name: tq_next_mysql
     build:
       context: ../..
       dockerfile: ./.docker/images/mysql/Dockerfile
@@ -33,7 +31,6 @@ services:
   
   # 開発用
   phpmyadmin:
-    container_name: tq_next_phpmyadmin
     image: phpmyadmin:latest
     env_file:
       - .env
