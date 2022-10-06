@@ -1,3 +1,6 @@
+MAKEFILE_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+PJ_NAME := `basename ${MAKEFILE_DIR}`
+
 .PHONY: init
 init:
 	@make up
@@ -5,23 +8,23 @@ init:
 
 .PHONY: up
 up:
-	docker compose -f ./.docker/dev/docker-compose.yml up -d
+	docker compose -p $(PJ_NAME) -f ./.docker/dev/docker-compose.yml up -d
 
 .PHONY: rebuild
 rebuild:
-	docker compose -f ./.docker/dev/docker-compose.yml up -d --build
+	docker compose -p $(PJ_NAME) -f ./.docker/dev/docker-compose.yml up -d --build
 
 .PHONY: stop
 stop:
-	docker compose -f ./.docker/dev/docker-compose.yml stop
+	docker compose -p $(PJ_NAME) -f ./.docker/dev/docker-compose.yml stop
 
 .PHONY: down
 down: 
-	docker compose -f ./.docker/dev/docker-compose.yml down
+	docker compose -p $(PJ_NAME) -f ./.docker/dev/docker-compose.yml down
 
 .PHONY: destroy
 destroy:
-	docker compose -f ./.docker/dev/docker-compose.yml down --rmi all --volumes --remove-orphans
+	docker compose -p $(PJ_NAME) -f ./.docker/dev/docker-compose.yml down --rmi all --volumes --remove-orphans
 
 .PHONY: refresh
 refresh:
